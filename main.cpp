@@ -11,7 +11,6 @@ int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
-int main_menu();
 
 int main() {
     srand(time(0));
@@ -33,5 +32,20 @@ int main() {
 }
 
 int main_menu(){
+    int choice;
     cout << "\n*** GOAT MANAGER 3001 ***\n" ;
     cout << "\n[1] Add a goat\n" ;
+    cout << "\n[2] Delete a goat\n" ;
+    cout << "\n[3] List goats\n" ;
+    cout << "\n[[4] Quit\n" ;
+    cout << "\nChoice --> " ;
+    cin >> choice;
+
+    while (cin.fail() || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore();
+        cout << "Invalid, Try again: "; 
+        cin >> choice;
+    }
+    return choice;
+}
