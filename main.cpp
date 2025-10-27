@@ -33,7 +33,7 @@ int main_menu(){
 
 int main() {
     srand(time(0));
-    bool again;
+    bool again = true;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -68,6 +68,7 @@ int main() {
             break;
 
             case 4:
+            again = false;
             break;
         }
     } while (again);
@@ -126,7 +127,7 @@ void delete_goat(list<Goat> &trip){
     int i = 1;
     for (auto it = trip.begin(); it != trip.end(); ++it, ++i) {
         if (i == choice) {
-            cout << "\nDelete " << it->get_name() << endl;
+            cout << "\nDeleted " << it->get_name() << endl;
             trip.erase(it);
             break;
         }
