@@ -18,7 +18,7 @@ int main_menu(){
     cout << "\n[1] Add a goat\n" ;
     cout << "\n[2] Delete a goat\n" ;
     cout << "\n[3] List goats\n" ;
-    cout << "\n[[4] Quit\n" ;
+    cout << "\n[4] Quit\n" ;
     cout << "\nChoice --> " ;
     cin >> choice;
 
@@ -51,23 +51,26 @@ int main() {
     list<Goat> trip;
     int choice;
 
-    choice = main_menu();
-    switch (choice) {
-        case 1: 
-        add_goat(trip, names, colors);
-        break;
 
-        case 2:
-        delete_goat(trip);
-        break;
+    do {
+        choice = main_menu();
+        switch (choice) {
+            case 1: 
+            add_goat(trip, names, colors);
+            break;
 
-        case 3:
-        display_trip(trip);
-        break;
+            case 2:
+            delete_goat(trip);
+            break;
 
-        case 4:
-        break;
-    }
+            case 3:
+            display_trip(trip);
+            break;
+
+            case 4:
+            break;
+        }
+    } while (again);
     return 0;
 }
 
