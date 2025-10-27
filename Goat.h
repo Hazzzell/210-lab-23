@@ -45,7 +45,7 @@ public:
 
     // write overloaded < operator for the std::list
     bool operator<(const Goat& rhs) const{
-        return name < rhs.name;
+        return name < rhs.name;             // sort name by Alphabet
     }
 };
 
