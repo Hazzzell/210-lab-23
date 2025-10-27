@@ -8,9 +8,28 @@ using namespace std;
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_AGE = 20;
 
 int select_goat(list<Goat> trip);
-void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
+void delete_goat(list<Goat> &trip);
+
+int main_menu(){
+    int choice;
+    cout << "\n*** GOAT MANAGER 3001 ***\n" ;
+    cout << "\n[1] Add a goat\n" ;
+    cout << "\n[2] Delete a goat\n" ;
+    cout << "\n[3] List goats\n" ;
+    cout << "\n[[4] Quit\n" ;
+    cout << "\nChoice --> " ;
+    cin >> choice;
+
+    while (cin.fail() || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore();
+        cout << "Invalid, Try again: "; 
+        cin >> choice;
+    }
+    return choice;
+}
 
 int main() {
     srand(time(0));
@@ -31,21 +50,18 @@ int main() {
     return 0;
 }
 
-int main_menu(){
-    int choice;
-    cout << "\n*** GOAT MANAGER 3001 ***\n" ;
-    cout << "\n[1] Add a goat\n" ;
-    cout << "\n[2] Delete a goat\n" ;
-    cout << "\n[3] List goats\n" ;
-    cout << "\n[[4] Quit\n" ;
-    cout << "\nChoice --> " ;
-    cin >> choice;
+void add_goat(list<Goat> &trip, string names[], string colors[]){
+    int randName = rand() % SZ_NAMES;
+    int randColor = rand() % SZ_COLORS;
+    int randAge = rand() % (MAX_AGE + 1);
 
-    while (cin.fail() || choice < 1 || choice > 4) {
-        cin.clear();
-        cin.ignore();
-        cout << "Invalid, Try again: "; 
-        cin >> choice;
-    }
-    return choice;
+    Goat g(names[randName], randAge, colors[randColor]);
+    trip.push_back(g);
+
+    cout << "\nAdded Goat: " 
+    << g.get_name() << " (" 
+    << g.get_age() << ", " 
+    << g.get_color() << ")\n";
 }
+void display_trip(list<Goat> trip);
+void delete_goat(list<Goat> &trip);
