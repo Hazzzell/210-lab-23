@@ -29,9 +29,9 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
-
-
     return 0;
 }
 
+int main_menu(){
+    cout << "\n*** GOAT MANAGER 3001 ***\n" ;
+    cout << "\n[1] Add a goat\n" ;
