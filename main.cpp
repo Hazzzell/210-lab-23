@@ -51,7 +51,20 @@ int main() {
 }
 
 int select_goat(list<Goat> trip){
+    display_trip(trip);
+    if (trip.empty()) return -1;
 
+    int choice;
+    cout << "\nSelect Goat number to delete: ";
+    cin >> choice;
+
+    while (cin.fail() || choice < 1 || choice > 4) {
+        cin.clear();
+        cin.ignore();
+        cout << "Invalid, Try again: "; 
+        cin >> choice;
+    }
+    return choice;
 }
 
 void add_goat(list<Goat> &trip, string names[], string colors[]){
@@ -82,4 +95,16 @@ void display_trip(list<Goat> trip){
     }
 }
 
-void delete_goat(list<Goat> &trip);
+void delete_goat(list<Goat> &trip){
+    int choice = select_goat(trip);
+    if (choice == -1) return;
+
+    int i = 1;
+    for (auto it = trip.begin(); it != trip.end(); ++it, ++i) {
+        if (i == choice) {
+            cout << "\nDelete " << it->get_name() << endl;
+            trip.erase(it);
+            break;
+        }
+    }
+}
